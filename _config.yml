@@ -6,17 +6,17 @@
 kind: "lesson"
 
 # Overall title for pages.
-title: "Collaborating with Git and GitHub"
+title: "Shell Tools and Environments"
 
 # Repository URL (without trailing slash).
-repo: https://github.com/Brainhack-NY/collab-git-tutorial
+repo: https://github.com/axiezai/wcm_datasci_basics_02environment 
 
 # Root URL below username.github.io domain, with leading slash but no trailing slash.
 # For example, for 'https://neurohackweek.github.io/lesson-example', use '/lesson-example'.
-root: "/collab-git-tutorial"
+root: "/wcm_datasci_basics_02environment"
 
 # Contact email address.
-email: brainhack.ny@gmail.com
+email: xix2007@med.cornell.edu 
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -37,7 +37,7 @@ rn_site: "https://repronim.github.io"
 rn_github: "https://github.com/repronim"
 
 # Start time in minutes (540 is 09:00 am)
-start_time: 630
+start_time: 570 
 
 # Specify that things in the episodes collection should be output.
 collections:
