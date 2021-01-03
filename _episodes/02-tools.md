@@ -28,10 +28,13 @@ One of the most common repetitive tasks that scientist faces is finding files or
 ~~~
 # Find all directories named src
 find . -name src -type d
+
 # Find all python files that have a folder named test in their path
 find . -path '*/test/*.py' -type f
+
 # Find all files modified in the last day
 find . -mtime -1
+
 # Find all zip files with size in range 500k to 10M
 find . -size +500k -size -10M -name '*.tar.gz'
 ~~~
@@ -42,6 +45,7 @@ Beyond listing files, find can also perform actions over files that match your q
 ~~~
 # Delete all files with .tmp extension
 find . -name '*.tmp' -exec rm {} \;
+
 # Find all PNG files and convert them to JPG
 find . -name '*.png' -exec convert {} {}.jpg \;
 ~~~
@@ -58,12 +62,15 @@ For now, know that `grep` has many flags that make it a very versatile tool. Som
 But `grep -R` can be improved in many ways, such as ignoring `.git` folders, using multi CPU support. Many `grep` alternatives have been developed, including [`ack`](https://beyondgrep.com/), [`ag`](https://github.com/ggreer/the_silver_searcher) and [`rg`](https://github.com/BurntSushi/ripgrep). All of them are fantastic and pretty much provide the same functionality. For now I am sticking with ripgrep (`rg`), given how fast and intuitive it is. Some examples:
 
 ~~~
-# Find all python files where I used the requests library
-rg -t py 'import requests'
+# Find all python files where I used the numpy library
+rg -t py 'import numpy'
+
 # Find all files (including hidden files) without a shebang line
 rg -u --files-without-match "^#!"
+
 # Find all matches of foo and print the following 5 lines
 rg foo -A 5
+
 # Print statistics of matches (# of matched lines and files )
 rg --stats PATTERN
 ~~~
