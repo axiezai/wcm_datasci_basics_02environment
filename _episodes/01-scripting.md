@@ -11,7 +11,7 @@ objectives:
 keypoints:
 - "Assign variables with `foo=bar` syntax"
 - "`STDIN`, `STDOUT`, and `STDERR`"
-- "Shell uses `'` and `"` to define strings"
+- "Shell define strings differently with single and double quotation marks"
 - "Globbing with wildcards and curly braces"
 ---
 
