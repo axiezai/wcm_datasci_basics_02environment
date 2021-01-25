@@ -12,9 +12,9 @@ exercises: "40"
 
 Let’s get you up to speed with dotfiles.
 
- 1. Create a folder for your dotfiles, we will learn how to version control and publish this folder in the next class.
+ 1. Using the terminal, create a folder for your dotfiles in your home directory (`~`), we will learn how to version control and publish this folder in the next class.
  2. Add a configuration for at least one program, e.g. your shell, with some customization (to start off, it can be something as simple as customizing your shell prompt by setting $PS1).
- 3. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls ln -s for each file, or you could use a specialized utility.
+ 3. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a specialized utility.
  4. Create a back up folder for your current dotfiles and test your installation script.
  5. Migrate all of your current tool configurations to your dotfiles repository.
 
