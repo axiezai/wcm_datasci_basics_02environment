@@ -14,12 +14,12 @@ Let’s get you up to speed with dotfiles.
 
  1. Using the terminal, create a folder for your dotfiles in your home directory (`~`), we will learn how to version control and publish this folder in the next class.
  2. Add a configuration for at least one program, e.g. your shell, with some customization (to start off, it can be something as simple as customizing your shell prompt by setting $PS1).
- 3. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a specialized utility.
+ 3. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a [specialized utility](https://dotfiles.github.io/utilities/).
  4. Create a back up folder for your current dotfiles and test your installation script.
  5. Migrate all of your current tool configurations to your dotfiles repository.
 
 #### Terminal Multiplexer
- 1. Follow this tmux tutorial and then learn how to do some basic customizations following these steps.
+ 1. Follow this `tmux` [tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) and then learn how to do some basic customizations following [these](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/) steps.
  2. Your customized `.tmux.conf` dotfile should also be placed in your dotfiles folder.
 
 #### Aliases
@@ -67,4 +67,11 @@ If you are using bash, you can place your aliases in `.bashrc` file, or create a
     echo "Everything went according to plan"
     ~~~
     {: .bash}
+
+### Part 3: Job Control
+ 1. Use `man` or `tldr` to learn about [`pgrep`](https://www.man7.org/linux/man-pages/man1/pgrep.1.html) and [`pkill`](http://man7.org/linux/man-pages/man1/pgrep.1.html). We may be used to using `jobs`, `htop`, or `ps aux | grep` commands to view processes or get job pids and then kill them. But there's a better way to do it. Start a `sleep 10000` job in a terminal, background it with `Ctrl-Z` and continue its execution with `bg`. Now use `pgrep` to find its pid and `pkill` to kill it without ever typing the pid itself. (Hint: use the `-af` flags)
+
+ 2. Say you don’t want to start a process until another completes, how you would go about it? In this exercise our limiting process will always be `sleep 60 &`. One way to achieve this is to use the [`wait`](https://www.man7.org/linux/man-pages/man1/wait.1p.html) command. Try launching the sleep command and having an `ls` wait until the background process finishes.
+
+ 3. However, The `wait` strategy will fail if we start in a different bash session, since `wait` only works for child processes. One feature we did not discuss in the notes is that the `kill` command’s exit status will be zero on success and nonzero otherwise. `kill -0` does not send a signal but will give a nonzero exit status if the process does not exist. Write a bash function called `pidwait` that takes a pid and waits until the given process completes. You should simply use `sleep` as your limiting process to avoid wasting CPU unnecessarily.
 
