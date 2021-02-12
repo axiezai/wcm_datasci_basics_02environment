@@ -36,7 +36,7 @@ If you are using bash, you can place your aliases in `.bashrc` file, or create a
     - Includes all files, including hidden files
     - Sizes are listed in human readable format (e.g. 454M instead of 454279954)
     - Files are ordered by recency
-    Output is colorized
+    - Output is colorized
 
     A sample output would look like this
 
