@@ -14,7 +14,35 @@ Let’s get you up to speed with dotfiles.
 
  1. Using the terminal, create a folder for your dotfiles in your home directory (`~`), we will learn how to version control and publish this folder in the next class.
  2. Add a configuration for at least one program, e.g. your shell, with some customization (to start off, it can be something as simple as customizing your shell prompt by setting $PS1).
- 3. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a [specialized utility](https://dotfiles.github.io/utilities/).
+ 3. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a [specialized utility](https://dotfiles.github.io/utilities/). An example of a simple shell script would be:
+
+    ```bash
+    #!/usr/bin/env sh
+
+    # Where is your dotfile folder and which dotfiles you want to install?
+    dir=~/dotfiles # dot files directory
+    olddir=~/dotfiles_old # backup dot files directory
+    files="bash_aliases bash_profile tmux.conf vimrc" # Example list of files you use to configure your tools, and you chose to be put in your dotfiles folder WITHOUT the . in front so they are no longer hidden
+
+    # Create a backup:
+    echo "Creating $olddir for backup of existing dotfiles in ~"
+    mkdir -p $olddir
+    echo "...done"
+
+    # change to the dotfiles directory
+    echo "Changing to the $dir directory"
+    cd $dir
+    echo "...done"
+
+    # Move existing files to backup folder and create symbolic links
+    for file in $files; do
+        echo "moving any existing dot files from ~ to $olddir"
+        mv ~/.$file ~/dotfiles_old/
+        echo "Creating symlink to $file in home directory."
+        ln -s $dir/$file ~/.$file
+    done
+    ```
+
  4. Create a back up folder for your current dotfiles and test your installation script.
  5. Migrate all of your current tool configurations to your dotfiles repository.
 
